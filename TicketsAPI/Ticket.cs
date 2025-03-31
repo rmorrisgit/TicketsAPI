@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace webd3000Api
+namespace TicketsAPI
 {
     public class Ticket
     {
