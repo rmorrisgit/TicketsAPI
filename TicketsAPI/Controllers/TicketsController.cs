@@ -5,6 +5,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TicketsAPI;
+using System.Text;
 
 namespace TicketsAPI.Controllers
 {
@@ -61,9 +62,9 @@ namespace TicketsAPI.Controllers
             // serialize an object to json
             string message = JsonSerializer.Serialize(ticket);
 
-            // send string message to queue
-            await queueClient.SendMessageAsync(message);
-
+            // send string message to queue (must encode as base64 to work properly)
+            var plainTextBytes = Encoding.UTF8.GetBytes(message);
+            await queueClient.SendMessageAsync(Convert.ToBase64String(plainTextBytes));
 
 
 
