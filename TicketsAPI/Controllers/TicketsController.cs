@@ -42,7 +42,7 @@ namespace TicketsAPI.Controllers
 
 
             if (ModelState.IsValid == false)
-            {
+            {   
                 return BadRequest(ModelState);
             }
 
